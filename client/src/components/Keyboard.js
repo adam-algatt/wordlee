@@ -4,7 +4,7 @@ import { keyboardRows } from './Words';
 import { useBoardContext } from '../hooks/useBoardContext';
 
 const Keyboard = () => {
- const { selectLetter } = useBoardContext();
+ const { selectLetter, disabledLetters } = useBoardContext();
   // callback prevents unecessary re renders
   const handleKeyStroke = useCallback((e) => { //alphabetic, enter, backspace keycode triggers selectLetter function in BoardContext
     if (e.keyCode >= 65 && e.keyCode <= 90 || e.keyCode === 8 || e.keyCode === 13) return selectLetter(e.key)
@@ -22,18 +22,18 @@ const Keyboard = () => {
     <div className='keyboard' onKeyDown={handleKeyStroke}>
       <div className='row'>
         {keyboardRows.row1.map(key => (
-          <Key val={key} key={`${key}-${Date.now()}`} />
+          <Key val={key} key={`${key}-${Date.now()}`} disabled={disabledLetters.includes(key)} />
         ))}
       </div>
       <div className='row'>
       {keyboardRows.row2.map(key => (
-        <Key val={key} key={`${key}-${Date.now()}`} />
+        <Key val={key} key={`${key}-${Date.now()}`} disabled={disabledLetters.includes(key)}/>
         ))}
       </div>
       <div className='row'>
       <Key val='ENTER'/>
       {keyboardRows.row3.map(key => (
-        <Key val={key} key={`${key}-${Date.now()}`} />
+        <Key val={key} key={`${key}-${Date.now()}`} disabled={disabledLetters.includes(key)}/>
         ))}
         <Key val='DEL'/>
       </div>

@@ -7,9 +7,14 @@ const BoardContextProvider = ({ children }) => {
     const [board, setBoard] = useState(defaultBoard);
     const [currentAttempt, setCurrentAttempt] = useState(0);
     const [letterPos, setLetterPos] = useState(0)
-    const [correctWord, setCorrectWord] = useState('');
+    const [correctWord, setCorrectWord] = useState('right');
     const [resultArr, setResultArr] = useState([]);
     const [wordSet, setWordSet] = useState(new Set());
+    const [disabledLetters, setDisabledLetters] = useState([]); //holds letters after guessed that shouldn't be keyboard options
+    const [gameOver, setGameOver] = useState({
+      gameOver: false,
+      guessedWord: false, 
+    })
   useEffect(() => {
    genWordSet().then((words)=>{
     setWordSet(words.wordSet)   
@@ -55,7 +60,14 @@ const BoardContextProvider = ({ children }) => {
 
       if (wordSet.has(currentWord.toLowerCase()) === false) return alert('Error must use a five-letter word!')
 
+      if (currentWord === correctWord) {
+        setGameOver({gameOver: true, guessedWord: true})//alert('Great job!')
+      
+      }
       // return setLetterPos(0), setCurrentAttempt(prev => prev + 1)
+      if (currentAttempt === 5) {
+        setGameOver({gameOver: true, guessedWord: false})
+      }
       return setLetterPos(0),setCurrentAttempt(prev => prev + 1)
     }
 
@@ -91,7 +103,11 @@ const BoardContextProvider = ({ children }) => {
         checkLetterGuess,
         correctWord,
         resultArr,
-        wordSet
+        wordSet,
+        disabledLetters,
+        setDisabledLetters,
+        gameOver, 
+        setGameOver
         }}>
           {children}
         </BoardContext.Provider>

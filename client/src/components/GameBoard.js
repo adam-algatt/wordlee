@@ -1,9 +1,6 @@
-import React, { useState, useContext } from 'react'
 import LetterGuess from './LetterGuess';
-import { useBoardContext } from '../hooks/useBoardContext';
 
 const GameBoard = () => {
- const { board, setBoard } = useBoardContext();
     // letter position is the index of inner array
     // attempt val is index of outer array
   return (

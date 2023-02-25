@@ -29,4 +29,3 @@ import wordBank from '../word-bank.txt'
         return { wordSet };
     }
 
-// stopping pt https://youtube.com/watch?v=WDTNwmXUz2c&feature=shares&t=3827

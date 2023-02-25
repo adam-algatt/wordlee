@@ -92,3 +92,7 @@ body {
 #err {
   background-color: red;
 }
+
+#disabled {
+  background-color: darkslategray;
+}

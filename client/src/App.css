@@ -1,0 +1,94 @@
+body {
+  background-color: #282c34;
+  color: #ffff; 
+}
+
+.App {
+  text-align: center;
+}
+
+
+.keyboard {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 4vh auto 4vh auto;
+}
+
+.key {
+  width: 50px;
+  height: 70px;
+  margin: 5px;
+  border-radius: 4px;
+  display: grid;
+  place-items: center;
+  font-size: 20px;
+  background-color: grey;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  cursor: pointer;
+}
+
+.letter {
+  flex: 33%;
+  height: 100%;
+  border: 1px solid grey;
+  margin: 5px;
+  display: grid;
+  place-items: center;
+  font-size: 30px;
+  font-weight: bolder;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+ 
+}
+
+.game {
+  width: 100vw;
+  height: calc(100vh - 170px);
+  display: flex;
+  align-items: center;
+  padding-top: 50px;
+  flex-direction: column;
+}
+
+.board {
+  width: 450px;
+  height: 550px;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+}
+
+.board-row {
+    flex: 33%;
+    display: flex;
+    flex-direction: row;
+    margin: 5px;
+}
+
+#big-key {
+  width: 100px;
+}
+
+#correct {
+  background-color: green;
+}
+
+#almost {
+  background-color: #F1EB9C;
+}
+
+#err {
+  background-color: red;
+}

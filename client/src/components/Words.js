@@ -14,18 +14,22 @@ import wordBank from '../word-bank.txt'
         row3 : ['z', 'x', 'c', 'v', 'b', 'n', 'm'],
     }
 
-   export const genWordSet = async() => {
-      // using set instead of arr for rapid functionality of .has() method
-      
-      let wordSet; 
+   export const genWordSet = async () => {
+     // using set instead of arr for rapid functionality of .has() method
 
-        await fetch(wordBank)
-          .then((res) => res.text())
-          .then((result) => {
-          const wordArr = result.split("\r\n") // ea new line is a diff arr el src wordbank had carriage return and newline as seperators
-            wordSet = new Set(wordArr)
-          })
+     let wordSet;
+     let todaysWord;
+     await fetch(wordBank)
+       .then((res) => res.text())
+       .then((result) => {
+         const wordArr = result.split("\r\n") // ea new line is a diff arr el src wordbank had carriage return and newline as seperators
+         todaysWord = wordArr[Math.floor(Math.random() * wordArr.length)]
+         wordSet = new Set(wordArr)
+       })
 
-        return { wordSet };
-    }
+     return {
+       wordSet, 
+       todaysWord
+     };
+   }
 

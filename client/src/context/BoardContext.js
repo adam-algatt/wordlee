@@ -7,7 +7,7 @@ const BoardContextProvider = ({ children }) => {
     const [board, setBoard] = useState(defaultBoard);
     const [currentAttempt, setCurrentAttempt] = useState(0);
     const [letterPos, setLetterPos] = useState(0)
-    const [correctWord, setCorrectWord] = useState('right');
+    const [correctWord, setCorrectWord] = useState('');
     const [resultArr, setResultArr] = useState([]);
     const [wordSet, setWordSet] = useState(new Set());
     const [disabledLetters, setDisabledLetters] = useState([]); //holds letters after guessed that shouldn't be keyboard options
@@ -17,8 +17,8 @@ const BoardContextProvider = ({ children }) => {
     })
   useEffect(() => {
    genWordSet().then((words)=>{
-    setWordSet(words.wordSet)   
-    
+    setWordSet(words.wordSet)
+    setCorrectWord(words.todaysWord)  
   })
   }, [])
  

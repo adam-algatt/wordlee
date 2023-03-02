@@ -1,4 +1,4 @@
-import wordBank from '../word-bank.txt'
+import { wordBank } from '../wordBank'
     export const defaultBoard = [
         ["", "", "", "", ""],
         ["", "", "", "", ""],
@@ -19,13 +19,12 @@ import wordBank from '../word-bank.txt'
 
      let wordSet;
      let todaysWord;
-     await fetch(wordBank)
-       .then((res) => res.text())
-       .then((result) => {
-         const wordArr = result.split("\r\n") // ea new line is a diff arr el src wordbank had carriage return and newline as seperators
-         todaysWord = wordArr[Math.floor(Math.random() * wordArr.length)]
-         wordSet = new Set(wordArr)
-       })
+  
+    const wordArr = wordBank.split('\n');
+    console.log(wordArr);
+    todaysWord = wordArr[Math.floor(Math.random() * wordArr.length)]
+    console.log(todaysWord);
+    wordSet = new Set(wordArr)
 
      return {
        wordSet, 

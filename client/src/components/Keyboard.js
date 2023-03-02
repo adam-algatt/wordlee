@@ -22,18 +22,18 @@ const Keyboard = () => {
     <div className='keyboard' onKeyDown={handleKeyStroke}>
       <div className='row'>
         {keyboardRows.row1.map(key => (
-          <Key val={key} key={`${key}-${Date.now()}`} disabled={disabledLetters.includes(key)} />
+          <Key val={key} key={`${key}-${Date.now()}`} disabled={disabledLetters.includes(key)}  />
         ))}
       </div>
       <div className='row'>
       {keyboardRows.row2.map(key => (
-        <Key val={key} key={`${key}-${Date.now()}`} disabled={disabledLetters.includes(key)}/>
+        <Key val={key} key={`${key}-${Date.now()}`} disabled={disabledLetters.includes(key)} />
         ))}
       </div>
       <div className='row'>
       <Key val='ENTER'/>
       {keyboardRows.row3.map(key => (
-        <Key val={key} key={`${key}-${Date.now()}`} disabled={disabledLetters.includes(key)}/>
+        <Key val={key} key={`${key}-${Date.now()}`} disabled={disabledLetters.includes(key)} />
         ))}
         <Key val='DEL'/>
       </div>

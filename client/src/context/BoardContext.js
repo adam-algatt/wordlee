@@ -8,11 +8,10 @@ const BoardContextProvider = ({ children }) => {
     const [currentAttempt, setCurrentAttempt] = useState(0);
     const [letterPos, setLetterPos] = useState(0)
     const [correctWord, setCorrectWord] = useState('');
-    const [resultArr, setResultArr] = useState([]);
     const [wordSet, setWordSet] = useState(new Set());
     const [disabledLetters, setDisabledLetters] = useState([]); //holds letters after guessed that shouldn't be keyboard options
     const [gameOver, setGameOver] = useState({
-      gameOver: false,
+      gameOver: false,  //change to false after GameOver component is done
       guessedWord: false, 
     })
   useEffect(() => {
@@ -22,24 +21,6 @@ const BoardContextProvider = ({ children }) => {
   })
   }, [])
  
-
-    const checkLetterGuess = (currentAttempt) => {
-      const correctWordArr = correctWord.toUpperCase().split('')
-      const containsLetter = (idx) => {
-        return correctWordArr.includes(board[currentAttempt][idx].toUpperCase())
-      }
-      let colorCodeArr = [];
-      correctWordArr.map((letter, idx) => {
-        if (letter.toUpperCase() === board[currentAttempt][idx].toUpperCase()) colorCodeArr[idx] = 'correct';
-        if (letter.toUpperCase() !== board[currentAttempt][idx].toUpperCase()) {
-          const letterInWord = containsLetter(idx);
-          if (letterInWord === true) colorCodeArr[idx] = 'included';
-          if (letterInWord === false) colorCodeArr[idx] = 'not-included';
-        }
-      })
-      setResultArr(colorCodeArr)
-    }
-
     const handleBackspace = () => {
         if (letterPos === 0) return
         let idx = letterPos - 1;
@@ -83,10 +64,7 @@ const BoardContextProvider = ({ children }) => {
         currentBoardState[currentAttempt][letterPos] = val;
         setBoard(currentBoardState);
         setLetterPos(prev => prev + 1)
-        // console.log({
-        //     currentAttempt,
-        //     letterPos, val
-        // })
+       
     }
     return (
         <BoardContext.Provider 
@@ -100,14 +78,12 @@ const BoardContextProvider = ({ children }) => {
         handleBackspace,
         handleEnter,
         selectLetter,
-        checkLetterGuess,
         correctWord,
-        resultArr,
         wordSet,
         disabledLetters,
         setDisabledLetters,
         gameOver, 
-        setGameOver
+        setGameOver,
         }}>
           {children}
         </BoardContext.Provider>

@@ -1,6 +1,7 @@
 body {
   background-color: #282c34;
   color: #ffff; 
+  caret-color: transparent;
 }
 
 .App {
@@ -65,7 +66,6 @@ body {
 .board {
   width: 450px;
   height: 550px;
-  border: 1px solid black;
   display: flex;
   flex-direction: column;
 }
@@ -96,3 +96,25 @@ body {
 #disabled {
   background-color: darkslategray;
 }
+
+.game-over {
+  margin-top: 5vh;
+}
+
+.game-over h3 {
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+
+}
+
+
+.game-over-btn {
+  padding: 10px 15px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+  margin-top: 35px;
+}
+

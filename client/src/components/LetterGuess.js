@@ -9,7 +9,6 @@ const LetterGuess = ({ letterPosition, attemptVal }) => {
     if (letter !== '' && !correct && !almost) setDisabledLetters(prev => [...prev, letter])
   }, [currentAttempt])
   
-
     const correct = correctWord[letterPosition] === letter;
     const almost = !correct && letter !== '' && correctWord.includes(letter); //not correct but in correct word
 
@@ -17,9 +16,9 @@ const LetterGuess = ({ letterPosition, attemptVal }) => {
     currentAttempt > attemptVal && 
     (correct ? 'correct' : almost ? 'almost' : 'err')
     return (
-    <div className='letter' id={letterState.toString()}>
+  <div className='letter' id={letterState.toString()}>
       {letter}
-    </div>
+  </div>
   )
 }
 
